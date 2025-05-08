@@ -1,7 +1,7 @@
-public class clothing extends product {
+public class Clothing extends Product {
     private String size;
 
-    public clothing(String name, double price, int productId, String size) {
+    public Clothing(String name, double price, int productId, String size) {
         super(name, price, productId);
         this.size = size;
     }
