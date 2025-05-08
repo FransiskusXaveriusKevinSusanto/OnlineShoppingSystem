@@ -37,6 +37,6 @@ public class Product {
 
     // Method getInfo
     public String getInfo() {
-        return name + " - " + price + " Rupiah";
+        return name + " - $" + price;
     }
 }
