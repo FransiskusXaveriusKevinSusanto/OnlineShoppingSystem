@@ -16,6 +16,6 @@ public class Clothing extends Product {
 
     @Override
     public String getInfo() {
-        return super.getInfo() + " - Ukuran: " + size;
+        return super.getInfo() + " - Size: " + size;
     }
 }
