@@ -15,3 +15,5 @@ Proyek ini terdiri dari beberapa kelas utama:
 2. Clone repositori ini:
    ```sh
    https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem.git
+
+## Penjelasan Cara Program Bekerja
