@@ -1,6 +1,6 @@
 # OnlineShoppingSystem
 
-## Deskripsi
+## Pengenalan
 Ini adalah repository kumpulan program OOP Java mengenai sistem Online Shop yang di buat oleh kelompok 8 yang beranggotakan:
 
 - Fransiskus Xaverius Kevin Susanto (50424473)
