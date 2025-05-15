@@ -8,7 +8,7 @@ Ini adalah repository kumpulan program OOP Java mengenai sistem Online Shop yang
 - Muhammad Rafliyanto Nugroho (50424906) (Kanaka431(akun github))
 - M Izza Anura Hafidz (50424660)
 
-## [OnlineShoppingSystem1](
+## [OnlineShoppingSystem1](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem1)
 Ini adalah folder program java sistem online shopping yang menggunakan OOP:
 - Class
 - Constructor
