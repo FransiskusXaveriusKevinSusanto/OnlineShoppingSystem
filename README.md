@@ -16,4 +16,4 @@ Ini adalah folder program java sistem online shopping yang menggunakan OOP:
 - Inheritance
 - Access
 
-## [OnlineShoppingSystem2](
+## [OnlineShoppingSystem2](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem2)
