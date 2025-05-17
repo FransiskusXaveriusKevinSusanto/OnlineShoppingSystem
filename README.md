@@ -42,7 +42,9 @@ Ini adalah folder program java sistem online shopping kedua yang menggunakan OOP
 - Date & Time (java.time)
 - Inner Class
 
-Berikut penjelasan struktur proyek berdasarkan kode yang telah dibuat:
+### Deskripsi
+Program ini mensimulasikan sistem belanja online sederhana dengan konsep OOP. Kelas abstrak `Product` diwarisi oleh `Electronics` dan `Clothing`, yang keduanya mengimplementasikan interface `Discountable` untuk menghitung harga setelah diskon. Enum `Size` digunakan pada `Clothing`, dan inner class `Specification` terdapat pada `Electronics`. Kelas `MainApp` membuat dan menampilkan data produk tanpa menggunakan array atau loop.
+
 
 ### Struktur Proyek
 Proyek ini terdiri dari beberapa kelas utama:
