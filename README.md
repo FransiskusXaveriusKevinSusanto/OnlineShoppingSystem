@@ -34,3 +34,21 @@ Dua subclass, yaitu Electronics dan Clothing, mewarisi atribut dan method dari P
 
 
 ## [OnlineShoppingSystem2](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem2)
+Ini adalah folder program java sistem online shopping kedua yang menggunakan OOP:
+- Polymorphism (tanpa array/loop)
+- Abstract Class
+- Interface
+- Enum
+- Date & Time (java.time)
+- Inner Class
+
+Berikut penjelasan struktur proyek berdasarkan kode yang telah dibuat:
+
+### Struktur Proyek
+Proyek ini terdiri dari beberapa kelas utama:
+* `Product.java` – Kelas abstrak sebagai dasar dari semua produk, memiliki atribut `createdAt` untuk mencatat waktu pembuatan objek, serta method abstrak `getCategory()` dan `getInfo()`.
+* `Discountable.java` – Interface yang mendefinisikan method `getDiscountedPrice(double discountPercentage)` untuk menghitung harga setelah diskon.
+* `Size.java` – Enum yang berisi nilai ukuran untuk produk pakaian, yaitu `XS`, `S`, `M`, `L`, dan `XL`.
+* `Electronics.java` – Subkelas dari `Product` yang mengimplementasikan interface `Discountable`. Menambahkan atribut `name`, `price`, dan inner class `Specification` yang menyimpan informasi `weight` dan `brand`.
+* `Clothing.java` – Subkelas dari `Product` yang mengimplementasikan interface `Discountable`. Menambahkan atribut `name`, `price`, dan `size` yang bertipe `Size`.
+* `MainApp.java` – Kelas utama untuk menjalankan program. Membuat masing-masing objek produk secara manual tanpa loop dan menampilkan informasi produk termasuk diskon.
