@@ -2,12 +2,14 @@ public class Clothing extends Product implements Discountable {
     private String name;
     private double price;
     private Size size;
+    private String brand;
 
-    public Clothing(String name, double price, Size size) {
+    public Clothing(String name, double price, Size size, String brand) {
         super();
         this.name = name;
         this.price = price;
         this.size = size;
+        this.brand = brand;
     }
 
     @Override
@@ -17,7 +19,7 @@ public class Clothing extends Product implements Discountable {
 
     @Override
     public String getInfo() {
-        return "Name: " + name + ", Size: " + size + ", Price: " + price;
+        return name + " (Brand: " + brand + ", Ukuran: " + size + ")";
     }
 
     @Override
