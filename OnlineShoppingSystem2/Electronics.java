@@ -1,47 +1,43 @@
-from datetime import datetime
+public class Electronics extends Product implements Discountable {
+    private String name;
+    private double price;
+    private Specification spec;
 
-# Interface Discountable
-class Discountable:
-    def get_discounted_price(self, discount_percentage: float) -> float:
-        raise NotImplementedError
+    public Electronics(String name, double price, double weight, String brand) {
+        super();
+        this.name = name;
+        this.price = price;
+        this.spec = new Specification(weight, brand);
+    }
+
+    @Override
+    public String getCategory() {
+        return "Electronics";
+    }
+
+    @Override
+    public String getInfo() {
+    return name + " (Brand: " + spec.brand + ", Berat: " + spec.weight + "kg)";
+    }
 
 
-# Abstract Product class
-class Product:
-    def _init_(self):
-        self.created_at = datetime.now()
+    @Override
+    public double getDiscountedPrice(double discountPercentage) {
+        return price * (1 - discountPercentage / 100);
+    }
 
-    def get_created_at(self):
-        return self.created_at
+    // Inner class
+    class Specification {
+        private double weight;
+        private String brand;
 
-    def get_category(self) -> str:
-        raise NotImplementedError
+        public Specification(double weight, String brand) {
+            this.weight = weight;
+            this.brand = brand;
+        }
 
-    def get_info(self) -> str:
-        raise NotImplementedError
-
-
-# Electronics class with inner Specification class
-class Electronics(Product, Discountable):
-    class Specification:
-        def _init_(self, weight: float, brand: str):
-            self.weight = weight
-            self.brand = brand
-
-        def get_specs(self):
-            return f"Brand: {self.brand}, Weight: {self.weight}kg"
-
-    def _init_(self, name: str, price: float, weight: float, brand: str):
-        super()._init_()
-        self.name = name
-        self.price = price
-        self.spec = self.Specification(weight, brand)
-
-    def get_category(self) -> str:
-        return "Electronics"
-
-    def get_info(self) -> str:
-        return f"Name: {self.name}, Specs: {self.spec.get_specs()}, Price: {self.price}"
-
-    def get_discounted_price(self, discount_percentage: float) -> float:
-        return self.price * (1 - discount_percentage / 100)
+        public String getSpecs() {
+            return "Brand: " + brand + ", Weight: " + weight + "kg";
+        }
+    }
+}
