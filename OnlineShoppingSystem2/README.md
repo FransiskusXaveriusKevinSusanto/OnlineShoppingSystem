@@ -21,7 +21,6 @@
 - `Clothing.java` → Produk pakaian dengan atribut ukuran dan merek.
 - `Electronics.java` → Produk elektronik dengan spesifikasi inner class.
 - `MainApp.java` → Menjalankan simulasi dan menampilkan informasi produk.
-- `README.md` → Penjelasan tentang proyek.
 
 ## 💻 Fitur
 - Menampilkan informasi detail dari produk `Clothing` dan `Electronics`.
