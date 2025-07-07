@@ -72,5 +72,76 @@ Kelas Clothing dan Electronics merupakan subclass dari Product yang mengimplemen
 
 
 ## 🚀 Cara Menjalankan Program
+- Pilih salah satu dari 3 tipe program Online Shopping System yang ingin di jalankan
+- Kompilasi semua file 
 ```bash
-test
+javac. *.java
+```
+- Jalankan programnya
+```bash
+java *
+```
+
+### Contoh Output
+- OnlineShoppingSystem1
+
+- OnlineShoppingSystem2
+```bash
+=======Produk Elektronik=======
+Kategori: Electronics
+Info Produk: Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp29.999.999,00)
+Dibuat pada: 2025-07-08T00:38:41.334986400
+Diskon yang tersedia: 30.0%
+Harga setelah diskon 30%: Rp20.999.999,30
+
+=======Produk Baju=======
+Kategori: Clothing
+Info Produk: Shirt (Brand: Polo, Ukuran: M, Harga Awal: Rp250.000,00)
+Dibuat pada: 2025-07-08T00:38:41.342510200
+Diskon yang tersedia: 15.0%
+Harga setelah diskon 15%: Rp212.500,00
+```
+- OnlineShoppingSystem3
+```bash
+Masukkan nama pelanggan: n
+
+=== Menu Utama ===
+1. Daftar Produk
+2. Keranjang Belanja
+3. Selesai / Bayar
+Masukkan pilihan: 1
+
+=== Daftar Produk Tersedia ===
+ID: 1 - Laptop - Rp29.999.999,00
+ID: 2 - Smartphone - Rp9.999.999,00
+ID: 3 - Shirt - Rp250.000,00
+ID: 4 - Jacket - Rp750.000,00
+Ketik ID produk untuk lihat info / beli, atau ketik 0 untuk kembali.
+Pilihan: 1
+
+Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp29.999.999,00)
+1. Tambahkan ke keranjang
+2. Kembali
+Pilih aksi: 1
+Produk berhasil ditambahkan ke keranjang.
+
+=== Daftar Produk Tersedia ===
+ID: 1 - Laptop - Rp29.999.999,00
+ID: 2 - Smartphone - Rp9.999.999,00
+ID: 3 - Shirt - Rp250.000,00
+ID: 4 - Jacket - Rp750.000,00
+Ketik ID produk untuk lihat info / beli, atau ketik 0 untuk kembali.
+Pilihan: 0
+
+=== Menu Utama ===
+1. Daftar Produk
+2. Keranjang Belanja
+3. Selesai / Bayar
+Masukkan pilihan: 3
+
+=== Ringkasan Belanja ===
+Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp29.999.999,00)
+Total yang harus dibayar: Rp29.999.999,00
+
+Terima kasih telah berbelanja, n!
+```
