@@ -60,3 +60,12 @@ Proyek ini terdiri dari beberapa kelas utama:
 Program ini merupakan contoh implementasi konsep inheritance (pewarisan), interface, dan enum dalam pemrograman Java untuk merepresentasikan produk dengan kategori yang berbeda, yaitu elektronik dan pakaian. Kelas abstrak Product menjadi kelas dasar yang menyimpan informasi umum seperti waktu pembuatan produk (createdAt) dan mendefinisikan metode abstrak getCategory() dan getInfo() yang wajib diimplementasikan oleh kelas turunannya. 
 
 Kelas Clothing dan Electronics merupakan subclass dari Product yang mengimplementasikan interface Discountable untuk menghitung harga produk setelah diberikan diskon. Clothing menggunakan enum Size untuk menentukan ukuran baju, sedangkan Electronics memiliki inner class Specification yang menyimpan detail spesifikasi seperti berat dan merek produk elektronik. Pada kelas MainApp, dibuat objek dari kedua kelas tersebut, kemudian informasi produk, waktu pembuatan, dan harga setelah diskon ditampilkan menggunakan format tanggal dan format mata uang yang sesuai dengan lokal Indonesia.
+
+
+## 🛒 [OnlineShoppingSystem3](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem3)
+
+### 🧠 Ini adalah folder program java sistem online shopping yang menggunakan OOP:
+- Exception Handling
+- ArrayList
+- Set
+- Map
