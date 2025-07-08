@@ -9,8 +9,8 @@ public class MainApp {
         TransactionManager transactionManager = new TransactionManager();
         NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
 
-        productManager.addProduct(new Electronics(1, "Laptop", 29999999, 2.5, "Lenovo"));
-        productManager.addProduct(new Electronics(2, "Smartphone", 9999999, 0.3, "Samsung"));
+        productManager.addProduct(new Electronics(1, "Laptop", 19999999, 2.5, "Lenovo"));
+        productManager.addProduct(new Electronics(2, "Smartphone", 5999999, 0.3, "Samsung"));
         productManager.addProduct(new Clothing(3, "Shirt", 250000, Size.M, "Polo"));
         productManager.addProduct(new Clothing(4, "Jacket", 750000, Size.L, "Levi's"));
 
@@ -33,8 +33,13 @@ public class MainApp {
                 } else {
                     double total = 0;
                     for (Product p : cart) {
+                        double hargaAkhir = (p instanceof Discountable d)
+                                ? d.getDiscountedPrice(p.getDiscountPercentage())
+                                : p.getPrice();
+
                         System.out.println(p.getInfo());
-                        total += p.getPrice();
+                        System.out.println("Harga setelah diskon: " + rupiahFormat.format(hargaAkhir));
+                        total += hargaAkhir;
                     }
                     System.out.println("Total yang harus dibayar: " + rupiahFormat.format(total));
                 }
@@ -53,7 +58,12 @@ public class MainApp {
                 while (true) {
                     System.out.println("\n=== Daftar Produk Tersedia ===");
                     for (Product p : allProducts) {
-                        System.out.println("ID: " + p.getId() + " - " + p.name + " - " + p.formatPrice());
+                        double hargaAkhir = (p instanceof Discountable d)
+                                ? d.getDiscountedPrice(p.getDiscountPercentage())
+                                : p.getPrice();
+
+                        System.out
+                                .println("ID: " + p.getId() + " - " + p.name + " - " + rupiahFormat.format(hargaAkhir));
                     }
                     System.out.println("Ketik ID produk untuk lihat info / beli, atau ketik 0 untuk kembali.");
                     System.out.print("Pilihan: ");
@@ -66,9 +76,15 @@ public class MainApp {
                     try {
                         Product selected = productManager.findProductById(id);
                         System.out.println("\n" + selected.getInfo());
+                        if (selected instanceof Discountable d) {
+                            System.out.println("Diskon: " + selected.getDiscountPercentage() + "%");
+                            System.out.println("Harga setelah diskon: " + rupiahFormat.format(
+                                    d.getDiscountedPrice(selected.getDiscountPercentage())));
+                        }
                         System.out.println("1. Tambahkan ke keranjang");
                         System.out.println("2. Kembali");
                         System.out.print("Pilih aksi: ");
+
                         String action = input.nextLine();
                         if (action.equals("1")) {
                             transactionManager.addPurchase(customerName, selected);
@@ -88,7 +104,12 @@ public class MainApp {
                     System.out.println("Keranjang belanja kosong.");
                 } else {
                     for (Product p : cart) {
+                        double hargaAkhir = (p instanceof Discountable d)
+                                ? d.getDiscountedPrice(p.getDiscountPercentage())
+                                : p.getPrice();
+
                         System.out.println(p.getInfo());
+                        System.out.println("Harga setelah diskon: " + rupiahFormat.format(hargaAkhir));
                     }
                 }
             }
