@@ -35,4 +35,14 @@ public abstract class Product {
     public abstract String getCategory();
 
     public abstract String getInfo();
+
+    protected double discountPercentage;
+
+    public void setDiscountPercentage(double discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
+
+    public double getDiscountPercentage() {
+        return discountPercentage;
+    }
 }
