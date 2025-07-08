@@ -4,6 +4,7 @@ public class Electronics extends Product implements Discountable {
     public Electronics(int id, String name, double price, double weight, String brand) {
         super(id, name, price);
         this.spec = new Specification(weight, brand);
+        setDiscountPercentage(10);
     }
 
     @Override
