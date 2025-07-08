@@ -6,6 +6,7 @@ public class Clothing extends Product implements Discountable {
         super(id, name, price);
         this.size = size;
         this.brand = brand;
+        setDiscountPercentage(20);
     }
 
     @Override
