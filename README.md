@@ -84,7 +84,15 @@ java *
 
 ### Contoh Output
 - OnlineShoppingSystem1
+```bash
+=== Produk Elektronik ===
+Product ID: 1001
+ASUS Vivobook - $1999.99 - Brand: ASUS - Warranty: 24 months
 
+=== Produk Pakaian ===
+Product ID: 2002
+Hoodie Polos - $10.25 - Size: L
+```
 - OnlineShoppingSystem2
 ```bash
 =======Produk Elektronik=======
