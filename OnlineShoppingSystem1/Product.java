@@ -37,6 +37,6 @@ public class Product {
 
     // Method getInfo
     public String getInfo() {
-        return name + " - $" + price;
+        return "Product ID: " + productId + "\n" + name + " - $" + String.format("%.2f", price);
     }
 }
