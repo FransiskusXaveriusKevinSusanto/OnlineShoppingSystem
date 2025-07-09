@@ -111,7 +111,7 @@ Harga setelah diskon 15%: Rp212.500,00
 ```
 - OnlineShoppingSystem3
 ```bash
-Masukkan nama pelanggan: n
+Masukkan nama pelanggan (atau ketik 'exit' untuk keluar): n
 
 === Menu Utama ===
 1. Daftar Produk
@@ -130,11 +130,30 @@ Pilihan: 1
 Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp19.999.999,00)
 Diskon: 10.0%
 Harga setelah diskon: Rp17.999.999,10
-Dibuat pada: 2025-07-09T14:58:58.750512100
+Dibuat pada: 2025-07-09T20:33:09.002938
 1. Tambahkan ke keranjang
 2. Kembali
 Pilih aksi: 1
+
 Produk berhasil ditambahkan ke keranjang.
+
+=== Daftar Produk Tersedia ===
+ID: 1 - Laptop - Rp17.999.999,10
+ID: 2 - Smartphone - Rp5.399.999,10
+ID: 3 - Shirt - Rp200.000,00
+ID: 4 - Jacket - Rp600.000,00
+Ketik ID produk untuk lihat info / beli, atau ketik 0 untuk kembali.
+Pilihan: 1
+
+Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp19.999.999,00)
+Diskon: 10.0%
+Harga setelah diskon: Rp17.999.999,10
+Dibuat pada: 2025-07-09T20:33:09.002938
+1. Tambahkan ke keranjang
+2. Kembali
+Pilih aksi: 1
+
+Produk sudah ada di dalam keranjang.
 
 === Daftar Produk Tersedia ===
 ID: 1 - Laptop - Rp17.999.999,10
@@ -148,12 +167,22 @@ Pilihan: 0
 1. Daftar Produk
 2. Keranjang Belanja
 3. Selesai / Bayar
+Masukkan pilihan: 2
+
+=== Keranjang Belanja ===
+Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp19.999.999,00)
+Harga setelah diskon: Rp17.999.999,10
+
+=== Menu Utama ===
+1. Daftar Produk
+2. Keranjang Belanja
+3. Selesai / Bayar
 Masukkan pilihan: 3
 
-=== Ringkasan Belanja ===
+=== Ringkasan Belanja n ===
 Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp19.999.999,00)
 Harga setelah diskon: Rp17.999.999,10
 Total yang harus dibayar: Rp17.999.999,10
 
-Terima kasih telah berbelanja, n!
+Masukkan nama pelanggan (atau ketik 'exit' untuk keluar): exit
 ```
