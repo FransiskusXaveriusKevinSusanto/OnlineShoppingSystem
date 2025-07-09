@@ -130,6 +130,7 @@ Pilihan: 1
 Laptop (Brand: Lenovo, Berat: 2.5kg, Harga Awal: Rp19.999.999,00)
 Diskon: 10.0%
 Harga setelah diskon: Rp17.999.999,10
+Dibuat pada: 2025-07-09T14:58:58.750512100
 1. Tambahkan ke keranjang
 2. Kembali
 Pilih aksi: 1
