@@ -1,13 +1,16 @@
 import java.util.*;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.NumberFormat;
 
 public class MainApp {
-
     public static void simpanTransaksiKeFile(String customerName, Set<Product> cart, NumberFormat rupiahFormat) {
-        String fileName = "transaksi_" + customerName + ".txt";
+        String folderName = "Transaksi"; // Folder khusus
+        File folder = new File(folderName);
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
+        String fileName = folderName + "/transaksi_" + customerName + ".txt";
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             writer.println("=== Ringkasan Belanja ===");
             writer.println("Pelanggan: " + customerName);
@@ -54,38 +57,27 @@ public class MainApp {
                 System.out.print("Masukkan pilihan: ");
                 String choice = input.nextLine();
 
-                if (choice.equals("3")) {
-                    Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
-                    System.out.println("\n=== Ringkasan Belanja " + customerName + " ===");
-                    if (cart == null || cart.isEmpty()) {
-                        System.out.println("Keranjang belanja kosong.");
-                    } else {
-                        double total = 0;
-                        for (Product p : cart) {
-                            double hargaAkhir = (p instanceof Discountable d)
-                                    ? d.getDiscountedPrice(p.getDiscountPercentage())
-                                    : p.getPrice();
-                            System.out.println(p.getInfo());
-                            System.out.println("Harga setelah diskon: " + rupiahFormat.format(hargaAkhir));
-                            total += hargaAkhir;
-                        }
-                        System.out.println("Total yang harus dibayar: " + rupiahFormat.format(total));
-                    }
-                    break;
-                }
-
                 if (choice.equals("1")) {
                     ArrayList<Product> allProducts = productManager.getAllProducts();
+                    if (allProducts.isEmpty()) {
+                        System.out.println("Belum ada produk yang tersedia.");
+                        continue;
+                    }
+
                     while (true) {
                         System.out.println("\n=== Daftar Produk Tersedia ===");
                         for (Product p : allProducts) {
                             double hargaAkhir = (p instanceof Discountable d)
                                     ? d.getDiscountedPrice(p.getDiscountPercentage())
                                     : p.getPrice();
-                            System.out.println(
-                                    "ID: " + p.getId() + " - " + p.name + " - " + rupiahFormat.format(hargaAkhir));
-                        }
 
+                            String diskonInfo = (p instanceof Discountable)
+                                    ? " (Diskon " + p.getDiscountPercentage() + "%!)"
+                                    : "";
+
+                            System.out.println("ID: " + p.getId() + " - " + p.name + " - "
+                                    + rupiahFormat.format(hargaAkhir) + diskonInfo);
+                        }
                         System.out.println("Ketik ID produk untuk lihat info / beli, atau ketik 0 untuk kembali.");
                         System.out.print("Pilihan: ");
                         int id = input.nextInt();
@@ -102,13 +94,13 @@ public class MainApp {
                                 System.out.println("Harga setelah diskon: " + rupiahFormat.format(
                                         d.getDiscountedPrice(selected.getDiscountPercentage())));
                                 System.out.println("Dibuat pada: " + selected.getCreatedAt());
-                            }
 
+                            }
                             System.out.println("1. Tambahkan ke keranjang");
                             System.out.println("2. Kembali");
                             System.out.print("Pilih aksi: ");
-                            String action = input.nextLine();
 
+                            String action = input.nextLine();
                             System.out.println();
                             if (action.equals("1")) {
                                 Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
@@ -127,27 +119,57 @@ public class MainApp {
                 }
 
                 else if (choice.equals("2")) {
-                    Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
                     System.out.println("\n=== Keranjang Belanja ===");
+                    Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
                     if (cart == null || cart.isEmpty()) {
                         System.out.println("Keranjang belanja kosong.");
                     } else {
+                        double total = 0;
                         for (Product p : cart) {
                             double hargaAkhir = (p instanceof Discountable d)
                                     ? d.getDiscountedPrice(p.getDiscountPercentage())
                                     : p.getPrice();
+
                             System.out.println(p.getInfo());
                             System.out.println("Harga setelah diskon: " + rupiahFormat.format(hargaAkhir));
+                            total += hargaAkhir;
                         }
+                        System.out.println("\nTotal yang harus dibayar: " + rupiahFormat.format(total));
                     }
+                }
+
+                else if (choice.equals("3")) {
+                    System.out.println("\n=== Ringkasan Belanja ===");
+                    Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
+                    if (cart == null || cart.isEmpty()) {
+                        System.out.println("Keranjang belanja kosong. Tidak ada yang perlu dibayar.");
+                    } else {
+                        double total = 0;
+                        for (Product p : cart) {
+                            double hargaAkhir = (p instanceof Discountable d)
+                                    ? d.getDiscountedPrice(p.getDiscountPercentage())
+                                    : p.getPrice();
+
+                            System.out.println(p.getInfo());
+                            System.out.println("Harga setelah diskon: " + rupiahFormat.format(hargaAkhir));
+                            total += hargaAkhir;
+                        }
+                        System.out.println("\nTotal yang harus dibayar: " + rupiahFormat.format(total));
+
+                    }
+
+                    System.out.println("Terima kasih telah berbelanja, " + customerName + "!\n");
+
+                    simpanTransaksiKeFile(customerName, cart, rupiahFormat);
+                    break;
                 }
 
                 else {
                     System.out.println("Pilihan tidak valid. Silakan coba lagi.");
                 }
             }
-        }
 
+        }
         input.close();
     }
 }
