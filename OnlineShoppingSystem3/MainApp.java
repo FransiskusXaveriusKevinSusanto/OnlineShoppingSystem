@@ -1,6 +1,5 @@
 import java.util.*;
 import java.text.NumberFormat;
-import java.util.Locale;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -80,15 +79,23 @@ public class MainApp {
                             System.out.println("Diskon: " + selected.getDiscountPercentage() + "%");
                             System.out.println("Harga setelah diskon: " + rupiahFormat.format(
                                     d.getDiscountedPrice(selected.getDiscountPercentage())));
+                            System.out.println("Dibuat pada: " + selected.getCreatedAt());
                         }
                         System.out.println("1. Tambahkan ke keranjang");
                         System.out.println("2. Kembali");
                         System.out.print("Pilih aksi: ");
 
                         String action = input.nextLine();
+
+                        System.out.println();
                         if (action.equals("1")) {
-                            transactionManager.addPurchase(customerName, selected);
-                            System.out.println("Produk berhasil ditambahkan ke keranjang.");
+                            Set<Product> cart = transactionManager.getCustomerPurchases(customerName);
+                            if (cart.contains(selected)) {
+                                System.out.println("Produk sudah ada di dalam keranjang.");
+                            } else {
+                                transactionManager.addPurchase(customerName, selected);
+                                System.out.println("Produk berhasil ditambahkan ke keranjang.");
+                            }
                         }
 
                     } catch (ProductNotFoundException e) {
