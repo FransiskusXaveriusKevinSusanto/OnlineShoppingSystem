@@ -37,6 +37,11 @@ Dua subclass, yaitu Electronics dan Clothing, mewarisi atribut dan method dari P
 ## 🛒 [OnlineShoppingSystem2](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem2)
 
 ### 🧠 Ini adalah folder program java sistem online shopping yang menggunakan OOP:
+- Class
+- Constructor
+- Encapsulation
+- Inheritance
+- Access
 - Polymorphism (tanpa array/loop)
 - Abstract Class
 - Interface
@@ -57,18 +62,58 @@ Proyek ini terdiri dari beberapa kelas utama:
 * `MainApp.java` – Kelas utama untuk menjalankan program. Membuat masing-masing objek produk secara manual tanpa loop dan menampilkan informasi produk termasuk diskon.
 
 ### 📘 Penjelasan Cara Program Bekerja
-Program ini merupakan contoh implementasi konsep inheritance (pewarisan), interface, dan enum dalam pemrograman Java untuk merepresentasikan produk dengan kategori yang berbeda, yaitu elektronik dan pakaian. Kelas abstrak Product menjadi kelas dasar yang menyimpan informasi umum seperti waktu pembuatan produk (createdAt) dan mendefinisikan metode abstrak getCategory() dan getInfo() yang wajib diimplementasikan oleh kelas turunannya. 
+Program ini merupakan implementasi konsep OOP (Object-Oriented Programming) dalam Java untuk mensimulasikan sistem belanja online dengan kategori produk elektronik dan pakaian. Kelas abstrak Product menjadi dasar bagi seluruh produk dan menyimpan informasi umum seperti nama, harga, waktu pembuatan (createdAt), serta method abstrak getCategory() dan getInfo() yang wajib diimplementasikan oleh subclass.
 
-Kelas Clothing dan Electronics merupakan subclass dari Product yang mengimplementasikan interface Discountable untuk menghitung harga produk setelah diberikan diskon. Clothing menggunakan enum Size untuk menentukan ukuran baju, sedangkan Electronics memiliki inner class Specification yang menyimpan detail spesifikasi seperti berat dan merek produk elektronik. Pada kelas MainApp, dibuat objek dari kedua kelas tersebut, kemudian informasi produk, waktu pembuatan, dan harga setelah diskon ditampilkan menggunakan format tanggal dan format mata uang yang sesuai dengan lokal Indonesia.
+Kelas Clothing dan Electronics merupakan subclass dari Product yang mengimplementasikan interface Discountable, sehingga memungkinkan perhitungan harga diskon sesuai kategori: Clothing mendapatkan diskon 10% dan Electronics 5%. Kelas Clothing menggunakan enum Size untuk mewakili ukuran produk, sedangkan Electronics memiliki inner class Specification untuk menyimpan data berat dan merek.
+
+Program menggunakan ProductManager untuk mengelola daftar produk, TransactionManager untuk mencatat transaksi berdasarkan nama pelanggan (menggunakan Map), serta Set untuk menyimpan item dalam keranjang agar tidak ganda. Dalam MainApp, pengguna diminta memasukkan nama, lalu dapat menelusuri produk, menambahkan ke keranjang, melihat keranjang, dan melakukan pembayaran. Harga ditampilkan menggunakan format mata uang Rupiah (NumberFormat).
+
+Setelah pembayaran, program akan menyimpan ringkasan transaksi ke dalam file teks dengan nama berdasarkan pelanggan, dan file tersebut otomatis tersimpan di dalam folder khusus bernama Transaksi. Fitur ini mencerminkan penggunaan File, PrintWriter, dan pengecekan folder dengan File.mkdir() untuk memastikan file tidak tersimpan sembarangan. Diskon juga ditampilkan secara langsung saat menampilkan daftar produk, memberikan transparansi kepada pengguna.
 
 
 ## 🛒 [OnlineShoppingSystem3](https://github.com/FransiskusXaveriusKevinSusanto/OnlineShoppingSystem/tree/main/OnlineShoppingSystem3)
 
 ### 🧠 Ini adalah folder program java sistem online shopping yang menggunakan OOP:
+- Class
+- Constructor
+- Encapsulation
+- Inheritance
+- Access
+- Polymorphism (tanpa array/loop)
+- Abstract Class
+- Interface
+- Enum
+- Date & Time (java.time)
+- Inner Class
 - Exception Handling
 - ArrayList
 - Set
 - Map
+
+### 📜 Deskripsi
+Program ini mensimulasikan sistem belanja online berbasis teks menggunakan pendekatan pemrograman berorientasi objek (OOP) di Java. Produk dikelompokkan dalam dua kategori utama: Electronics dan Clothing. Setiap kategori memiliki informasi spesifik dan diskon yang diterapkan secara berbeda. Selama program berjalan, pengguna dapat memasukkan nama, memilih produk berdasarkan ID, menambahkan ke keranjang, melihat isi keranjang, dan melakukan pembayaran. Transaksi yang dilakukan otomatis tersimpan dalam file `.txt` dengan nama pelanggan di dalam folder khusus bernama `Transaksi`.
+
+### 📁 Struktur Proyek
+Proyek ini terdiri dari beberapa kelas utama:
+* `Product.java` – Kelas abstrak dasar bagi semua produk. Menyimpan atribut umum seperti ID, nama, harga, dan waktu pembuatan (`createdAt`). Mewajibkan subclass untuk mengimplementasikan `getCategory()` dan `getInfo()`. Override `equals()` dan `hashCode()` agar produk dengan ID sama dikenali sebagai entitas yang sama dalam `Set`.
+* `Discountable.java` – Interface untuk produk yang dapat diberi diskon. Mewajibkan implementasi method `getDiscountedPrice(double percentage)` dan `getDiscountPercentage()`.
+* `Size.java` – Enum yang berisi nilai ukuran untuk produk pakaian, yaitu `XS`, `S`, `M`, `L`, dan `XL`.
+* `Electronics.java` – Subkelas dari `Product` yang mengimplementasikan interface `Discountable`. Menambahkan atribut `name`, `price`, dan inner class `Specification` yang menyimpan informasi `weight` dan `brand`.
+* `Clothing.java` – Subkelas dari `Product` yang mengimplementasikan interface `Discountable`. Menambahkan atribut `name`, `price`, dan `size` yang bertipe `Size`.
+* `MainApp.java` – Kelas utama untuk menjalankan program. Membuat masing-masing objek produk secara manual tanpa loop dan menampilkan informasi produk termasuk diskon. Menyediakan menu interaktif untuk input nama pelanggan, menampilkan daftar produk dengan diskon, menambahkan produk ke keranjang, menampilkan isi keranjang, dan menyelesaikan transaksi. Setelah pembayaran, transaksi disimpan ke dalam file `transaksi_<nama>.txt` di folder `Transaksi`.
+* `ProductManager.java` – Bertanggung jawab menyimpan dan mengelola semua produk. Menyediakan metode untuk menambahkan produk, mengambil semua produk, dan mencari produk berdasarkan ID dengan penanganan error khusus.
+* `ProductNotFoundException.java` – Kelas exception kustom yang akan dilempar jika produk yang dicari tidak ditemukan berdasarkan ID.
+* `TransactionManager.java` – Menyimpan seluruh transaksi berdasarkan nama pelanggan menggunakan Map<String, Set<Product>>. Setiap pelanggan memiliki keranjang unik yang hanya dapat berisi satu entri untuk setiap produk.
+
+### ⚙️ Fitur & Logika Tambahan
+– Diskon berbeda berdasarkan tipe produk: Clothing mendapat 10%, Electronics mendapat 5%.
+– Transaksi disimpan otomatis dalam file teks setelah pembayaran, lengkap dengan ringkasan dan total pembayaran.
+– Folder Transaksi akan otomatis dibuat saat pertama kali menyimpan file.
+– Sistem mencegah produk yang sama masuk dua kali ke dalam keranjang.
+– Menampilkan harga asli, diskon, dan harga setelah diskon.
+– Menggunakan NumberFormat untuk menampilkan harga dalam format Rupiah.
+
+
 
 
 ## 🚀 Cara Menjalankan Program
